@@ -401,6 +401,7 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    
 }
 
 /* MAIN */
@@ -540,12 +541,16 @@ strong {
     }
 
     .image2 .images2 {
-        width: 90%;
+        width: 100%;
     }
 
     .item {
         width: 87%;
     }
+.items{
+    width: 88%;
+}
+    
     .container {
         flex-direction: column;
         width: 100%;
@@ -555,8 +560,8 @@ strong {
 
     .container2 {
         padding-top: 30px;
-        justify-content: center;
-
+        margin-left: 5px;
+        
     }
 
     .entête {
@@ -588,7 +593,7 @@ strong {
 
 @media screen and (min-width: 640px) and (max-width: 1024px) {
     .image2 .images2 {
-        width: 350px;
+        width: 100%;
     }
 
     #sidebar {
@@ -597,11 +602,14 @@ strong {
 
     .container {
         justify-content: center; 
+        
     }
 
     .item {
-        width: 360px;
-    }
+        width: 340px;
+    }.items{
+    width: 48%;
+}
 
     #sidebar.expand {
         transform: translateX(0);
