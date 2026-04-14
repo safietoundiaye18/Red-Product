@@ -17,3 +17,27 @@ overlay.addEventListener("click", function () {
     overlay.classList.remove("active");
 });
 }
+
+// MODAL
+let btnajouterHotel = document.querySelector(".btnajouter button")
+let transparant = document.querySelector(".transparant")
+let modal = document.querySelector(".modal")
+let fermerModal = document.querySelector("#fermermodal")
+
+
+btnajouterHotel.addEventListener("click", function(){
+    transparant.classList.add("active")
+    modal.classList.add("active")
+})
+fermerModal.addEventListener("click", function(){
+    transparant.classList.remove("active")
+    modal.classList.remove("active")
+    form.reset()
+})
+
+
+
+
+
+
+

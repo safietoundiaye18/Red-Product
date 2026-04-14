@@ -45,7 +45,7 @@ body {
 .entête1 {
     display: flex;
     gap: 6px;
-    
+
 }
 
 .entête2 {
@@ -63,6 +63,8 @@ body {
 }
 
 .p-entête {
+    padding-top: 10px;
+    font-size: 1.2rem;
     color: rgb(220, 213, 213);
 }
 
@@ -71,9 +73,10 @@ body {
     padding-right: 15px;
     height: 35px;
     border: 1px solid gray;
-    margin-top: 6px;
+    margin-top: 17px;
     border-radius: 10px;
     background-color: white;
+    cursor: pointer;
 }
 
 #icon {
@@ -84,6 +87,17 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 0.5px;
+}
+
+.size1 {
+    font-weight: 0.5px;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.769);
+}
+
+.size2 {
+    color: rgb(137, 137, 137);
+    font-size: 1rem;
 }
 
 header {
@@ -226,11 +240,13 @@ span {
 
 .bas {
     display: flex;
+    font-size: 15px;
     color: white;
     flex-direction: row;
+    padding: 8px;
     position: absolute;
     bottom: 0%;
-    border-top: 0.1px solid white;
+    border-top: 0.1px solid rgba(173, 172, 172, 0.594);
     gap: 6px
 }
 
@@ -239,6 +255,7 @@ span {
 }
 
 .lineheight {
+    padding-top: 8px;
     line-height: 3px;
 }
 
@@ -352,7 +369,19 @@ span {
 }
 
 .pad {
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pad p b {
+    font-weight: 100;
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.737);
+}
+
+.pad p {
+    color: rgb(137, 137, 137);
+    font-size: 0.9rem;
 }
 
 .contenu {
@@ -367,7 +396,7 @@ span {
 
 .image2 .images2 {
     width: 245px;
-    height: auto;
+    height: 180px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 
@@ -401,7 +430,7 @@ span {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
-    
+
 }
 
 /* MAIN */
@@ -482,6 +511,11 @@ span {
     margin-top: 15px;
 }
 
+.button a {
+    text-decoration: none;
+    color: white;
+}
+
 .button:hover {
     background-color: rgb(107, 105, 105);
 }
@@ -519,6 +553,114 @@ strong {
     display: block;
 }
 
+/* MODAL */
+
+.transparant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    color: rgb(0, 0, 0);
+    background-color: rgb(254, 254, 254);
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    margin-top: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.haut {
+    display: flex;
+    gap: 10px;
+}
+
+#border {
+    border-top: 1.2px dotted rgb(146, 146, 146);
+    padding-top: 20px;
+}
+
+.display {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.div1 {
+    padding-bottom: 10px;
+}
+
+.div1 input {
+    width: 200px;
+    outline: none;
+}
+
+.div1 select {
+    width: 210px;
+    padding: 2.5px;
+    outline: none;
+}
+
+.label {
+    display: block;
+    width: 430px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.label .imgholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #aaa;
+}
+
+.label i {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.select {
+    color: #969595;
+}
+
+.btnform {
+    padding: 10px 15px;
+    background-color: rgb(126, 122, 122);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+}
+
+.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+#fermermodal {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 638px) {
     #sidebar {
         transform: translateX(-100%);
@@ -527,7 +669,8 @@ strong {
     #sidebar.expand {
         transform: translateX(0);
     }
-    .sous-entête3{
+
+    .sous-entête3 {
         padding-top: 20px;
     }
 
@@ -538,7 +681,7 @@ strong {
     header {
         width: 100%;
     }
-    
+
     .main {
         margin-left: 0;
     }
@@ -547,24 +690,25 @@ strong {
         width: 100%;
     }
 
-    .entête1{
+    .entête1 {
         padding-bottom: 20px;
     }
 
     .img1 .image1 {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin-top: 10px;
-}
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-top: 10px;
+    }
 
     .item {
         width: 87%;
     }
-.items{
-    width: 88%;
-}
-    
+
+    .items {
+        width: 88%;
+    }
+
     .container {
         flex-direction: column;
         width: 100%;
@@ -583,8 +727,8 @@ strong {
 
     .entête2 {
         padding-top: 10px;
-       margin-top: 40px;
-       padding-bottom: 10px;
+        margin-top: 40px;
+        padding-bottom: 10px;
     }
 
     .contenu {
@@ -597,6 +741,56 @@ strong {
     }
 
 
+    .transparant {
+        align-items: flex-end;
+        /* modal collée en bas sur mobile */
+        padding: 0;
+    }
+
+    .div1 {
+        width: 100%;
+        /* ← ajouter ceci */
+        padding-bottom: 10px;
+    }
+
+    .modal {
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 16px 16px 0 0;
+        /* arrondi seulement en haut */
+        padding: 20px 15px;
+        margin-top: 0;
+        /* margin-bottom: 50px; */
+        box-sizing: border-box;
+    }
+
+    .haut {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .display {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .div1 input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .div1 select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    .label {
+        width: 100%;
+        height: 90px;
+        box-sizing: border-box;
+    }
 }
 
 /* @media screen and (min-width: 768px) {
@@ -615,15 +809,17 @@ strong {
     }
 
     .container {
-        justify-content: center; 
-        
+        justify-content: center;
+
     }
 
     .item {
         width: 340px;
-    }.items{
-    width: 48%;
-}
+    }
+
+    .items {
+        width: 48%;
+    }
 
     #sidebar.expand {
         transform: translateX(0);
@@ -647,5 +843,7 @@ strong {
         justify-content: center;
 
     }
+
+
 
 }
