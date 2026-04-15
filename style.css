@@ -526,6 +526,10 @@ span {
     color: white;
 }
 
+.textdecoration{
+    text-decoration: none;
+}
+
 strong {
     color: rgb(253, 211, 97);
 }
