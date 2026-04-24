@@ -14,26 +14,32 @@
 <body>
     <div class="formulaire">
         <div class="bgoppacité2">
-            <form action=""  id="formConnexion">
+            <form action="" id="formConnexion">
                 <div class="icon3">
                     <div class="logo"><img class="logo" src="images/Link → SVG.png" alt=""></div>
                     <p class="centrer">RED PRODUCT</p>
                 </div>
-                <div class="bg1" >
+                <div class="bg1">
                     <p class="p1">Connectez-vous en tant que Admin</p>
-                     <p id="erreurMessage" style="color: red; font-size: 0.85rem; display: none;"></p>
+                    <p id="erreurMessage" style="color: red; font-size: 0.85rem; display: none;"></p>
                     <div><input class="inputform1" type="text" id="email" placeholder="E-mail" required></div>
-                    <div><input class="inputform1" type="text" id="motDePasse" placeholder="Mot de passe" required></div>
-                    <div class="p2"> 
-                        <input  class="p3" type="checkbox" id="garderConnecte">
+                    <div style="position: relative;">
+                        <input class="inputform1" type="password" id="motDePasse" placeholder="Mot de passe" required>
+                        <i class="fa-regular fa-eye" id="togglePassword"
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: gray;"></i>
+                    </div>
+                    <div class="p2">
+                        <input class="p3" type="checkbox" id="garderConnecte">
                         <p class="p1">Gardez-moi connecté</p>
                     </div>
 
                     <button class="button" type="submit" id="btnConnexion">Se connecter</button>
                 </div>
 
-                <p class="p4"><a class="textdecoration" href="motdepasse.html"><strong>Mot de passe oublié?</strong></a></p>
-                <p class="p4">Vous n'avez pas de compte? <a class="textdecoration" href="incrit.html"><strong>S'inscrire</strong></a></p>
+                <p class="p4"><a class="textdecoration" href="motdepasse.html"><strong>Mot de passe oublié?</strong></a>
+                </p>
+                <p class="p4">Vous n'avez pas de compte? <a class="textdecoration"
+                        href="incrit.html"><strong>S'inscrire</strong></a></p>
             </form>
         </div>
     </div>

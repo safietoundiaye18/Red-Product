@@ -14,7 +14,7 @@
 <body>
     <div class="formulaire">
         <div class="bgoppacité2">
-            <form action="" class="round">
+            <form id="formMotDePasse" action="" class="round">
                 <div class="icon3">
                     <div class="logo"><img class="logo" src="images/Link → SVG.png" alt=""></div>
                     <p class="centrer">RED PRODUCT</p>
@@ -22,10 +22,10 @@
                 <div class="bg1">
                     <p class="p1">Mot de passe oublié?</p>
                     <p class="p5">Entrez votre adresse e-mail ci-dessous et <br> nous vous envoyons des intructions sur la <br>façon de modifier votre mot de passe</p>
-                    <div><input class="inputform1" type="text" placeholder="E-mail"></div>
+                    <div><input id="email" class="inputform1" type="mail" placeholder="E-mail" required></div>
                     
 
-                    <button class="button">
+                    <button type="submit" class="button">
                         <b>Envoyé</b>
                     </button>
                 </div>
@@ -34,6 +34,7 @@
         </div>
     </div>
 
+    <script src="motdepass.js"></script>
 </body>
 
 </html>

@@ -14,31 +14,35 @@
 <body>
     <div class="formulaire">
         <div class="bgoppacité2">
-            <form action="" class="round">
+            <form id="formInscription" class="round">
                 <div class="icon3">
                     <div class="logo"><img class="logo" src="images/Link → SVG.png" alt=""></div>
                     <p class="centrer">RED PRODUCT</p>
                 </div>
                 <div class="bg1">
                     <p class="p1">Inscrivez-vous en tant que Admin</p>
-                    <div><input class="inputform1" type="name" placeholder="Nom"></div>
-                    <div><input class="inputform1" type="email" placeholder="E-mail"></div>
-                    <div><input class="inputform1" type="password" placeholder="Mot de passe"></div>
+                     <p id="messageInscription" style="font-size: 0.85rem; display: none;"></p>
+                    <div><input class="inputform1" type="text" id="nom" placeholder="Nom" required></div>
+                    <div><input class="inputform1" type="email" id="email" placeholder="E-mail" required></div>
+                    
+                     <div style="position: relative;">
+                        <input class="inputform1" type="password" id="motDePasse" placeholder="Mot de passe" required>
+                        <i class="fa-regular fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: gray;"></i>
+                    </div>
+
                     <div class="p2">
-                        <input class="p3" type="checkbox">
+                        <input class="p3" id="termes" type="checkbox" required>
                         <p class="p1">Accepter les termes et la politique</p>
                     </div>
 
-                    <button class="button" type="submit">
-                       <a class="textdecoration" href="index.html"> <b>S'inscrire</b></a>
-                    </button>
+                    <button class="button" type="submit" id="btnInscription"><b>S'inscrire</b></button>
                 </div>
                 <p class="p4">Vous avez déja un compte? <a class="textdecoration" href="index.html"><strong>Se
                             connecter</strong></a></p>
             </form>
         </div>
     </div>
-
+<script src="inscrit.js"></script>
 </body>
 
 </html>

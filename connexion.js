@@ -36,6 +36,15 @@ formConnexion.addEventListener('submit', async (e) => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('utilisateur', JSON.stringify(data.utilisateur));
 
+
+            // Message de succès
+            erreurMessage.style.color = 'green';
+            erreurMessage.textContent = 'Connexion réussie !';
+            erreurMessage.style.display = 'block';
+
+            // Attendre 1 seconde avant de rediriger
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
             // Rediriger vers le dashboard
             window.location.href = 'daschboard.html';
         } else {
@@ -56,6 +65,22 @@ formConnexion.addEventListener('submit', async (e) => {
 });
 
 
+// Afficher/cacher le mot de passe
+const togglePassword = document.getElementById('togglePassword');
+const motDePasseField = document.getElementById('motDePasse');
+
+togglePassword.addEventListener('click', () => {
+    if (motDePasseField.type === 'password') {
+        motDePasseField.type = 'text';
+        togglePassword.classList.remove('fa-eye');
+        togglePassword.classList.add('fa-eye-slash');
+    } else {
+        motDePasseField.type = 'password';
+        togglePassword.classList.remove('fa-eye-slash');
+        togglePassword.classList.add('fa-eye');
+    }
+});
+
 /*
 
 Explication du JavaScript :
@@ -66,5 +91,12 @@ localStorage.setItem('token') → sauvegarde le token dans le navigateur pour le
 localStorage.setItem('utilisateur') → sauvegarde les infos de l'utilisateur pour les afficher dans la sidebar
 window.location.href → redirige vers le dashboard si la connexion réussit
 btnConnexion.disabled = true → désactive le bouton pendant la requête pour éviter les doubles clics
+
+
+Explication :
+
+L'icône œil est positionnée à droite de l'input
+Au clic, on change le type de password à text pour afficher le mot de passe
+L'icône change de fa-eye à fa-eye-slash pour indiquer l'état
 
 */
