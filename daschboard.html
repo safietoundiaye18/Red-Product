@@ -27,12 +27,6 @@
                 <nav>
                     <p class="p-side1">Principal</p>
                     <div>
-                        <!-- <div class="icon1" id="icon1">
-                            <p><span class="material-symbols-outlined">dashboard</span></p>
-                            <p class="nav1" id="nav1" id="colorblack1"> <a class="a1"
-                                    href="daschboard.html">Daschboard</a></p>
-                        </div> -->
-
                         <div class="icon1" id="icon1">
                             <a class="nav-link" href="daschboard.html">
                                 <span class="material-symbols-outlined">dashboard</span>
@@ -98,63 +92,12 @@
 
                 <!-- MAIN -->
                 <main class="contenu">
-                    <!-- <div class="container">
-                        <div class="item" id="item">
-                            <i id="p6" class="fa-solid fa-envelope-open" style="color: rgb(255, 255, 255);"></i>
-                            <div class="pad">
-                                <p><span class="pan">125</span> Formulaire</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                        <div class="item" id="item">
-                            <i id="p7" class="fa-solid fa-p" style="color: rgb(255, 255, 255);"></i>
-                            <div class="pad">
-                                <p><span class="pan">40</span> Messages</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                        <div class="item" id="item">
-                            <i id="p8" class="fa-solid  fa-user-group" style="color: rgb(255, 254, 254);"></i>
-                            <div class="pad">
-                                <p><span class="pan">600</span> Utilisateur</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                        <div class="item" id="item">
-                            <i id="p9" class="fa-solid fa-envelope-open" style="color: rgb(255, 255, 255);"></i>
-                            <div class="pad">
-                                <p><span class="pan">25</span> E-mail</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                        <div class="item" id="item">
-                            <i id="p10" class="fa-solid fa-p" style="color: rgb(255, 255, 255);"></i>
-                            <div class="pad">
-                                <p><span class="pan">40</span> Hôtels</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                        <div class="item" id="item">
-                            <i id="p11" class="fa-solid  fa-user-group" style="color: rgb(255, 255, 255);"></i>
-                            <div class="pad">
-                                <p><span class="pan">02</span> Entités</p>
-                                <p>Je ne sais pas quoi mettre</p>
-                            </div>
-                        </div>
-
-                    </div> -->
-
                     <div class="cards-container">
 
                         <div id="ic1" class="item">
                             <i class="fa-solid fa-envelope-open"></i>
                             <div class="pad">
-                                <p><span class="pan">125</span> Formulaire</p>
+                                <p><span class="pan" id="kpi-formulaires">--</span> Formulaire</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -162,7 +105,7 @@
                         <div id="ic2" class="item">
                             <i class="fa-solid fa-p"></i>
                             <div class="pad">
-                                <p><span class="pan">40</span> Messages</p>
+                                <p><span class="pan" id="kpi-messages">--</span> Messages</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -170,7 +113,7 @@
                         <div id="ic3" class="item">
                             <i class="fa-solid fa-user-group"></i>
                             <div class="pad">
-                                <p><span class="pan">600</span> Utilisateur</p>
+                                <p><span class="pan" id="kpi-users">--</span> Utilisateur</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -178,7 +121,7 @@
                         <div id="ic4" class="item">
                             <i class="fa-solid fa-envelope-open"></i>
                             <div class="pad">
-                                <p><span class="pan">25</span> E-mail</p>
+                                <p><span class="pan" id="kpi-emails">--</span> E-mail</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -186,7 +129,7 @@
                         <div id="ic5" class="item">
                             <i class="fa-solid fa-p"></i>
                             <div class="pad">
-                                <p><span class="pan">40</span> Hôtels</p>
+                                <p><span class="pan" id="kpi-hotels">--</span> Hôtels</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -194,7 +137,7 @@
                         <div id="ic6" class="item">
                             <i class="fa-solid fa-user-group"></i>
                             <div class="pad">
-                                <p><span class="pan">02</span> Entités</p>
+                                <p><span class="pan" id="kpi-entites">--</span> Entités</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -206,14 +149,9 @@
             <!-- MAIN -->
         </div>
     </div>
-
-
-
-
-
-
     <div class="overlay"></div>
     <script src="script.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 
 </html>

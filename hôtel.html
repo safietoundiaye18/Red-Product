@@ -92,7 +92,7 @@
                     <div class="entête2">
                         <div class="sous-entête1">
                             <p class="size1">Hôtels</p>
-                            <p class="p-entête">8</p>
+                            <p class="p-entête" id="nombreHotels">--</p>
                         </div>
 
                         <div class="btnajouter">
@@ -104,8 +104,8 @@
                 <!-- EN-TETE -->
                 <main class="contenu no-scroll">
                     <div class="container">
-                        <div class="container2">
-                            <div class="items">
+                        <div class="container2" id="listeHotels">
+                            <!-- <div class="items">
                                 <div class="image2"><img class="images2"
                                         src="images/2ace93ddd9dc9cfc7b2bd9d9a279634ee238b1c0.jpg" alt=""></div>
                                 <div class="basimage">
@@ -183,7 +183,9 @@
                                     <p id="basimage1"><b class="pan1">Hôtel Terrou-Bi</b></p>
                                     <p id="basimage">25.000 XOF par nuit</p>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <p id="chargement">Chargement des hôtels...</p>
                         </div>
                     </div>
 
@@ -193,7 +195,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal ajouter-->
 
         <div class="transparant">
             <div class="modal">
@@ -225,7 +227,7 @@
                         <div>
                             <div class="div1">
                                 <div class="div1"><label for="adresse">Adresse</label></div>
-                                <input type="text" id="name" placeholder="Les îles du saloum, Mar Lodj">
+                                <input type="text" id="adresse" placeholder="Les îles du saloum, Mar Lodj">
                             </div>
 
                             <div class="div1">
@@ -246,22 +248,97 @@
 
                     <p>Ajouter une photo</p>
                     <label class="label">
-                        <input type="file" id="image" hidden>
+                        <input type="file" id="imageHotel" hidden>
                         <div class="imgholder">
                             <i class="fa-solid fa-image fa-lg" style="color: rgb(167, 165, 165);"></i>
                             <p>Ajouter une photo</p>
                         </div>
                     </label>
 
-                  <div class="mit">  <button type="submit" class="btnform">Enregistrer</button> </div>
+                    <div class="mit"> <button type="submit" class="btnform">Enregistrer</button> </div>
                 </form>
             </div>
 
         </div>
     </div>
 
+    <!-- Modal Détail/Modifier Hôtel -->
+<div class="transparant" id="modalDetail">
+    <div class="modal">
+        <div>
+            <p class="haut">
+                <i id="fermerDetail" class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i>
+                Détail de l'hôtel
+            </p>
+        </div>
+
+        <div id="border">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img id="detailImage" src="" alt="" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+            </div>
+
+            <div class="display">
+                <div>
+                    <div class="div1">
+                        <label>Nom de l'hôtel</label>
+                        <input type="text" id="detailNom" placeholder="Nom">
+                    </div>
+                    <div class="div1">
+                        <label>E-mail</label>
+                        <input type="text" id="detailEmail" placeholder="E-mail">
+                    </div>
+                    <div class="div1">
+                        <label>Prix par nuit</label>
+                        <input type="number" id="detailPrix" placeholder="Prix">
+                    </div>
+                </div>
+                <div>
+                    <div class="div1">
+                        <label>Adresse</label>
+                        <input type="text" id="detailAdresse" placeholder="Adresse">
+                    </div>
+                    <div class="div1">
+                        <label>Numéro de téléphone</label>
+                        <input type="text" id="detailTelephone" placeholder="Téléphone">
+                    </div>
+                    <div class="div1">
+                        <label>Devise</label>
+                        <select id="detailDevise">
+                            <option>F XOF</option>
+                            <option>Euro</option>
+                            <option>Dollar</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div1">
+                <label>Changer la photo</label>
+                <label class="label">
+                    <input type="file" id="detailImageFile" hidden>
+                    <div class="imgholder">
+                        <i class="fa-solid fa-image fa-lg" style="color: rgb(167, 165, 165);"></i>
+                        <p>Changer la photo</p>
+                    </div>
+                </label>
+            </div>
+
+            <input type="hidden" id="detailId">
+
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button id="btnModifier" class="btnform" style="background-color: rgb(70, 130, 180); flex: 1;">
+                    Modifier
+                </button>
+                <button id="btnSupprimer" class="btnform" style="background-color: rgb(220, 53, 69); flex: 1;">
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="overlay"></div>
     <script src="script.js"></script>
+    <script src="hotel.js"></script>
 </body>
 
 </html>
