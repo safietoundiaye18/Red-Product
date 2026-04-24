@@ -14,23 +14,22 @@
 <body>
     <div class="formulaire">
         <div class="bgoppacité2">
-            <form action="">
+            <form action=""  id="formConnexion">
                 <div class="icon3">
-                    <p><i class="fa-regular fa-bookmark fa-lg" style="color: rgb(255, 255, 255);"></i></p>
+                    <div class="logo"><img class="logo" src="images/Link → SVG.png" alt=""></div>
                     <p class="centrer">RED PRODUCT</p>
                 </div>
-                <div class="bg1">
+                <div class="bg1" >
                     <p class="p1">Connectez-vous en tant que Admin</p>
-                    <div><input class="inputform1" type="text" placeholder="E-mail"></div>
-                    <div><input class="inputform1" type="text" placeholder="Mot de passe"></div>
+                     <p id="erreurMessage" style="color: red; font-size: 0.85rem; display: none;"></p>
+                    <div><input class="inputform1" type="text" id="email" placeholder="E-mail" required></div>
+                    <div><input class="inputform1" type="text" id="motDePasse" placeholder="Mot de passe" required></div>
                     <div class="p2"> 
-                        <input  class="p3" type="checkbox">
+                        <input  class="p3" type="checkbox" id="garderConnecte">
                         <p class="p1">Gardez-moi connecté</p>
                     </div>
 
-                    <button class="button">
-                        <a href="daschboard.html">Se connecter</a>
-                    </button>
+                    <button class="button" type="submit" id="btnConnexion">Se connecter</button>
                 </div>
 
                 <p class="p4"><a class="textdecoration" href="motdepasse.html"><strong>Mot de passe oublié?</strong></a></p>
@@ -39,6 +38,7 @@
         </div>
     </div>
 
+    <script src="connexion.js"></script>
 </body>
 
 </html>

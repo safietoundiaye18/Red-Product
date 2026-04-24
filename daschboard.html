@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Product</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dashboard" />
@@ -17,20 +20,30 @@
         <aside class="bg" id="sidebar">
             <div class="bg-color">
                 <div class="side">
-                    <p><i class="fa-regular fa-bookmark fa-lg" style="color: rgb(255, 255, 255);"></i></p>
+                    <div class="logo"><img class="logo" src="images/Link → SVG.png" alt=""></div>
                     <p class="p-side">RED PRODUCT</p>
                 </div>
 
                 <nav>
                     <p class="p-side1">Principal</p>
                     <div>
-                        <div class="icon1" id="icon1">
+                        <!-- <div class="icon1" id="icon1">
                             <p><span class="material-symbols-outlined">dashboard</span></p>
                             <p class="nav1" id="nav1" id="colorblack1"> <a class="a1"
                                     href="daschboard.html">Daschboard</a></p>
+                        </div> -->
+
+                        <div class="icon1" id="icon1">
+                            <a class="nav-link" href="daschboard.html">
+                                <span class="material-symbols-outlined">dashboard</span>
+                                Dashboard
+                            </a>
                         </div>
-                        <p class="nav2"><a class="a3" href="hôtel.html"> <i id="icon2" class="fa-solid fa-display fa-lg"
-                                    style="color: rgb(255, 255, 255);"></i>Liste des Hôtels</a></p>
+                        <div class="left">
+                            <p class="nav2"><a class="a3" href="hôtel.html"> <i id="icon2"
+                                        class="fa-solid fa-display fa-md" style="color: rgb(217, 217, 217);"></i>Liste
+                                    des Hôtels</a></p>
+                        </div>
                     </div>
                 </nav>
 
@@ -39,7 +52,7 @@
                             src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png" alt=""></div>
 
                     <div class="lineheight">
-                        <p>Moukhamed Badiane</p>
+                        <p>Moukhamed</p>
                         <p><i class="fa-solid fa-circle fa-2xs" style="color: rgb(107, 201, 25);"></i> En ligne</p>
                     </div>
                 </div>
@@ -57,7 +70,7 @@
                                 <i class="fa-solid fa-bars-staggered fa-2xl" style="color: rgb(0, 0, 0);"></i>
                             </button>
 
-                            <p><b>Daschboard</b></p>
+                            <p class="dash1">Daschboard</p>
                         </div>
                         <div class="entête1">
                             <div class="iconinput">
@@ -68,14 +81,15 @@
                             <div class="img1"><img class="image1"
                                     src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png" alt="">
                             </div>
-                            <p> <a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color: rgb(0, 0, 0);"></i></a>
+                            <p> <a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"
+                                        style="color: rgb(0, 0, 0);"></i></a>
                             </p>
                         </div>
                     </div>
 
                     <div class="entête2">
                         <div class="sous-entête3">
-                            <p class="size1">Bienvenue sur RED Product</p>
+                            <p class="size1">Bienvenue sur RED Product <br> </p>
                             <p class="size2">Lorem ipsum dolor sit amet consecteur</p>
                         </div>
                     </div>
@@ -84,11 +98,11 @@
 
                 <!-- MAIN -->
                 <main class="contenu">
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="item" id="item">
                             <i id="p6" class="fa-solid fa-envelope-open" style="color: rgb(255, 255, 255);"></i>
                             <div class="pad">
-                                <p><b>125</b> Formulaire</p>
+                                <p><span class="pan">125</span> Formulaire</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -96,7 +110,7 @@
                         <div class="item" id="item">
                             <i id="p7" class="fa-solid fa-p" style="color: rgb(255, 255, 255);"></i>
                             <div class="pad">
-                                <p><b>40</b> Messages</p>
+                                <p><span class="pan">40</span> Messages</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -104,7 +118,7 @@
                         <div class="item" id="item">
                             <i id="p8" class="fa-solid  fa-user-group" style="color: rgb(255, 254, 254);"></i>
                             <div class="pad">
-                                <p><b>600</b> Utilisateur</p>
+                                <p><span class="pan">600</span> Utilisateur</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -112,7 +126,7 @@
                         <div class="item" id="item">
                             <i id="p9" class="fa-solid fa-envelope-open" style="color: rgb(255, 255, 255);"></i>
                             <div class="pad">
-                                <p><b>25</b> E-mail</p>
+                                <p><span class="pan">25</span> E-mail</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -120,7 +134,7 @@
                         <div class="item" id="item">
                             <i id="p10" class="fa-solid fa-p" style="color: rgb(255, 255, 255);"></i>
                             <div class="pad">
-                                <p><b>40</b> Hôtels</p>
+                                <p><span class="pan">40</span> Hôtels</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
@@ -128,24 +142,78 @@
                         <div class="item" id="item">
                             <i id="p11" class="fa-solid  fa-user-group" style="color: rgb(255, 255, 255);"></i>
                             <div class="pad">
-                                <p><b>02</b> Entités</p>
+                                <p><span class="pan">02</span> Entités</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                    </div> -->
+
+                    <div class="cards-container">
+
+                        <div id="ic1" class="item">
+                            <i class="fa-solid fa-envelope-open"></i>
+                            <div class="pad">
+                                <p><span class="pan">125</span> Formulaire</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div id="ic2" class="item">
+                            <i class="fa-solid fa-p"></i>
+                            <div class="pad">
+                                <p><span class="pan">40</span> Messages</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div id="ic3" class="item">
+                            <i class="fa-solid fa-user-group"></i>
+                            <div class="pad">
+                                <p><span class="pan">600</span> Utilisateur</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div id="ic4" class="item">
+                            <i class="fa-solid fa-envelope-open"></i>
+                            <div class="pad">
+                                <p><span class="pan">25</span> E-mail</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div id="ic5" class="item">
+                            <i class="fa-solid fa-p"></i>
+                            <div class="pad">
+                                <p><span class="pan">40</span> Hôtels</p>
+                                <p>Je ne sais pas quoi mettre</p>
+                            </div>
+                        </div>
+
+                        <div id="ic6" class="item">
+                            <i class="fa-solid fa-user-group"></i>
+                            <div class="pad">
+                                <p><span class="pan">02</span> Entités</p>
                                 <p>Je ne sais pas quoi mettre</p>
                             </div>
                         </div>
 
                     </div>
-                </main>
-                <!-- MAIN -->
+
             </div>
+            </main>
+            <!-- MAIN -->
         </div>
+    </div>
 
 
 
 
 
 
- <div class="overlay"></div>
-        <script src="script.js"></script>
+    <div class="overlay"></div>
+    <script src="script.js"></script>
 </body>
 
 </html>
