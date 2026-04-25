@@ -16,12 +16,12 @@ if (utilisateur) {
 // Vérifier si l'utilisateur est admin
 const estAdmin = utilisateur && utilisateur.role === 'admin';
 
-// Cacher le bouton "Créer un hôtel" si pas admin
+// Tout le monde peut gérer ses hôtels
 const btnAjouter = document.querySelector('.btnajouter');
-if (btnAjouter && !estAdmin) {
+if (btnAjouter) {
     btnAjouter.style.display = 'none';
 }
-
+// && !estAdmin
 // Éléments
 const listeHotels = document.getElementById('listeHotels');
 const nombreHotels = document.getElementById('nombreHotels');
@@ -109,20 +109,12 @@ async function ouvrirDetailHotel(id) {
             modalDetail.classList.add('active');
             document.querySelector('#modalDetail .modal').classList.add('active');
 
-            // ← ICI : Afficher/cacher les boutons selon le rôle
-            if (!estAdmin) {
-                btnModifier.style.display = 'none';
-                btnSupprimer.style.display = 'none';
-                document.querySelectorAll('#modalDetail input, #modalDetail select').forEach(input => {
-                    input.disabled = true;
-                });
-            } else {
-                btnModifier.style.display = 'block';
-                btnSupprimer.style.display = 'block';
-                document.querySelectorAll('#modalDetail input, #modalDetail select').forEach(input => {
-                    input.disabled = false;
-                });
-            }
+            // Toujours afficher les boutons modifier et supprimer
+            btnModifier.style.display = 'block';
+            btnSupprimer.style.display = 'block';
+            document.querySelectorAll('#modalDetail input, #modalDetail select').forEach(input => {
+                input.disabled = false;
+            });
         }
     } catch (erreur) {
         console.error(erreur);
