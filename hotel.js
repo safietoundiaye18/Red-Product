@@ -1,5 +1,6 @@
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
 
+
 // Vérifier que l'utilisateur est connecté
 const token = localStorage.getItem('token');
 if (!token) {
@@ -19,7 +20,7 @@ const estAdmin = utilisateur && utilisateur.role === 'admin';
 // Tout le monde peut gérer ses hôtels
 const btnAjouter = document.querySelector('.btnajouter');
 if (btnAjouter) {
-    btnAjouter.style.display = 'none';
+    btnAjouter.style.display = 'block';
 }
 // && !estAdmin
 // Éléments
@@ -30,18 +31,21 @@ const modalDetail = document.getElementById('modalDetail');
 const fermerDetail = document.getElementById('fermerDetail');
 const btnModifier = document.getElementById('btnModifier');
 const btnSupprimer = document.getElementById('btnSupprimer');
+let pageCourante = 1;
 
 // Charger les hôtels
-async function chargerHotels(search = '') {
+async function chargerHotels(search = '', page = 1) {
     try {
         listeHotels.innerHTML = '<p id="chargement">Chargement des hôtels...</p>';
 
-        let url = `${API_URL}/api/hotels?limit=20`;
+        let url = `${API_URL}/api/hotels?limit=8&page=${page}&tri=createdAt&ordre=desc`;
         if (search) url += `&search=${search}`;
 
-        const response = await fetch(url, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
+
+        const response = await fetch(url);
+        // const response = await fetch(url, {
+        //     headers: { 'Authorization': `Bearer ${token}` }
+        // });
 
         const data = await response.json();
 
@@ -50,6 +54,7 @@ async function chargerHotels(search = '') {
 
             if (data.hotels.length === 0) {
                 listeHotels.innerHTML = '<p>Aucun hôtel trouvé.</p>';
+                document.getElementById('pagination').innerHTML = '';
                 return;
             }
 
@@ -76,6 +81,9 @@ async function chargerHotels(search = '') {
                     ouvrirDetailHotel(id);
                 });
             });
+
+            // Afficher la pagination
+            afficherPagination(data.page, data.pages);
         }
     } catch (erreur) {
         listeHotels.innerHTML = '<p>Erreur de chargement des hôtels.</p>';
@@ -83,6 +91,58 @@ async function chargerHotels(search = '') {
     }
 }
 
+
+function afficherPagination(pageCourante, totalPages) {
+    const pagination = document.getElementById('pagination');
+
+    if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+    }
+
+    let html = '';
+
+    // Bouton Précédent
+    html += `
+        <button 
+            onclick="changerPage(${pageCourante - 1})" 
+            ${pageCourante === 1 ? 'disabled' : ''}
+            style="padding: 8px 15px; border: 1px solid gray; border-radius: 8px; cursor: pointer; background: ${pageCourante === 1 ? '#eee' : 'white'};">
+            ← Précédent
+        </button>
+    `;
+
+    // Numéros de pages
+    for (let i = 1; i <= totalPages; i++) {
+        html += `
+            <button 
+                onclick="changerPage(${i})"
+                style="padding: 8px 12px; border: 1px solid gray; border-radius: 8px; cursor: pointer; background: ${i === pageCourante ? 'rgb(77,77,77)' : 'white'}; color: ${i === pageCourante ? 'white' : 'black'};">
+                ${i}
+            </button>
+        `;
+    }
+
+    // Bouton Suivant
+    html += `
+        <button 
+            onclick="changerPage(${pageCourante + 1})" 
+            ${pageCourante === totalPages ? 'disabled' : ''}
+            style="padding: 8px 15px; border: 1px solid gray; border-radius: 8px; cursor: pointer; background: ${pageCourante === totalPages ? '#eee' : 'white'};">
+            Suivant →
+        </button>
+    `;
+
+    pagination.innerHTML = html;
+}
+
+function changerPage(page) {
+    pageCourante = page;
+    const search = searchInput.value.trim();
+    chargerHotels(search, pageCourante);
+    // Remonter en haut
+    window.scrollTo(0, 0);
+}
 // Ouvrir le modal détail
 async function ouvrirDetailHotel(id) {
     try {
@@ -222,7 +282,8 @@ let rechercheTimeout;
 searchInput.addEventListener('input', (e) => {
     clearTimeout(rechercheTimeout);
     rechercheTimeout = setTimeout(() => {
-        chargerHotels(e.target.value.trim());
+        pageCourante = 1;
+        chargerHotels(e.target.value.trim(), 1);
     }, 500);
 });
 
@@ -283,4 +344,4 @@ if (btnDeconnexion) {
 }
 
 // Charger au démarrage
-chargerHotels();
+chargerHotels('', 1);
