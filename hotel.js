@@ -168,6 +168,7 @@ async function ouvrirDetailHotel(id) {
             // Ouvrir le modal
             modalDetail.classList.add('active');
             document.querySelector('#modalDetail .modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
 
             // Toujours afficher les boutons modifier et supprimer
             btnModifier.style.display = 'block';
@@ -185,6 +186,7 @@ async function ouvrirDetailHotel(id) {
 fermerDetail.addEventListener('click', () => {
     modalDetail.classList.remove('active');
     document.querySelector('#modalDetail .modal').classList.remove('active');
+    document.body.style.overflow = '';
 });
 
 // Fermer en cliquant dehors
@@ -192,8 +194,10 @@ modalDetail.addEventListener('click', (e) => {
     if (e.target === modalDetail) {
         modalDetail.classList.remove('active');
         document.querySelector('#modalDetail .modal').classList.remove('active');
+        document.body.style.overflow = '';
     }
 });
+
 
 // Modifier un hôtel
 btnModifier.addEventListener('click', async () => {
@@ -226,7 +230,7 @@ btnModifier.addEventListener('click', async () => {
             // Fermer le modal
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
-
+            document.body.style.overflow = '';
             // Recharger les hôtels
             chargerHotels();
         } else {
@@ -262,7 +266,7 @@ btnSupprimer.addEventListener('click', async () => {
             // Fermer le modal
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
-
+            document.body.style.overflow = '';
             // Recharger les hôtels
             chargerHotels();
         } else {

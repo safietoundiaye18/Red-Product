@@ -109,6 +109,7 @@ if (btnajouterHotel && transparant && modal && fermerModal) {
     btnajouterHotel.addEventListener("click", function () {
         transparant.classList.add("active");
         modal.classList.add("active");
+        document.body.style.overflow = 'hidden';
     });
 
     // FERMER (bouton)
@@ -130,6 +131,7 @@ if (btnajouterHotel && transparant && modal && fermerModal) {
     function closeModal() {
         transparant.classList.remove("active");
         modal.classList.remove("active");
+        document.body.style.overflow = '';
         if (form) form.reset();
     }
 }
