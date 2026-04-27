@@ -1,6 +1,5 @@
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
 
-
 // Vérifier que l'utilisateur est connecté
 const token = localStorage.getItem('token');
 if (!token) {
@@ -14,15 +13,12 @@ if (utilisateur) {
     if (nomElement) nomElement.textContent = utilisateur.nom;
 }
 
-// Vérifier si l'utilisateur est admin
-const estAdmin = utilisateur && utilisateur.role === 'admin';
-
 // Tout le monde peut gérer ses hôtels
 const btnAjouter = document.querySelector('.btnajouter');
 if (btnAjouter) {
     btnAjouter.style.display = 'block';
 }
-// && !estAdmin
+
 // Éléments
 const listeHotels = document.getElementById('listeHotels');
 const nombreHotels = document.getElementById('nombreHotels');
@@ -41,12 +37,7 @@ async function chargerHotels(search = '', page = 1) {
         let url = `${API_URL}/api/hotels?limit=8&page=${page}&tri=createdAt&ordre=desc`;
         if (search) url += `&search=${search}`;
 
-
         const response = await fetch(url);
-        // const response = await fetch(url, {
-        //     headers: { 'Authorization': `Bearer ${token}` }
-        // });
-
         const data = await response.json();
 
         if (data.succes) {
@@ -74,15 +65,12 @@ async function chargerHotels(search = '', page = 1) {
                 </div>
             `).join('');
 
-            // Ajouter événement clic sur chaque hôtel
             document.querySelectorAll('.items').forEach(item => {
                 item.addEventListener('click', () => {
-                    const id = item.dataset.id;
-                    ouvrirDetailHotel(id);
+                    ouvrirDetailHotel(item.dataset.id);
                 });
             });
 
-            // Afficher la pagination
             afficherPagination(data.page, data.pages);
         }
     } catch (erreur) {
@@ -91,7 +79,7 @@ async function chargerHotels(search = '', page = 1) {
     }
 }
 
-
+// Pagination
 function afficherPagination(pageCourante, totalPages) {
     const pagination = document.getElementById('pagination');
 
@@ -102,7 +90,6 @@ function afficherPagination(pageCourante, totalPages) {
 
     let html = '';
 
-    // Bouton Précédent
     html += `
         <button 
             onclick="changerPage(${pageCourante - 1})" 
@@ -112,7 +99,6 @@ function afficherPagination(pageCourante, totalPages) {
         </button>
     `;
 
-    // Numéros de pages
     for (let i = 1; i <= totalPages; i++) {
         html += `
             <button 
@@ -123,7 +109,6 @@ function afficherPagination(pageCourante, totalPages) {
         `;
     }
 
-    // Bouton Suivant
     html += `
         <button 
             onclick="changerPage(${pageCourante + 1})" 
@@ -138,11 +123,10 @@ function afficherPagination(pageCourante, totalPages) {
 
 function changerPage(page) {
     pageCourante = page;
-    const search = searchInput.value.trim();
-    chargerHotels(search, pageCourante);
-    // Remonter en haut
+    chargerHotels(searchInput.value.trim(), pageCourante);
     window.scrollTo(0, 0);
 }
+
 // Ouvrir le modal détail
 async function ouvrirDetailHotel(id) {
     try {
@@ -155,7 +139,6 @@ async function ouvrirDetailHotel(id) {
         if (data.succes) {
             const hotel = data.hotel;
 
-            // Remplir les champs
             document.getElementById('detailId').value = hotel._id;
             document.getElementById('detailNom').value = hotel.nom;
             document.getElementById('detailEmail').value = hotel.email || '';
@@ -165,12 +148,10 @@ async function ouvrirDetailHotel(id) {
             document.getElementById('detailDevise').value = hotel.devise || 'F XOF';
             document.getElementById('detailImage').src = hotel.image || 'images/2ace93ddd9dc9cfc7b2bd9d9a279634ee238b1c0.jpg';
 
-            // Ouvrir le modal
             modalDetail.classList.add('active');
             document.querySelector('#modalDetail .modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('no-scroll');
 
-            // Toujours afficher les boutons modifier et supprimer
             btnModifier.style.display = 'block';
             btnSupprimer.style.display = 'block';
             document.querySelectorAll('#modalDetail input, #modalDetail select').forEach(input => {
@@ -182,22 +163,21 @@ async function ouvrirDetailHotel(id) {
     }
 }
 
-// Fermer le modal détail
+// Fermer modal détail - bouton
 fermerDetail.addEventListener('click', () => {
     modalDetail.classList.remove('active');
     document.querySelector('#modalDetail .modal').classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
 });
 
-// Fermer en cliquant dehors
+// Fermer modal détail - clic dehors
 modalDetail.addEventListener('click', (e) => {
     if (e.target === modalDetail) {
         modalDetail.classList.remove('active');
         document.querySelector('#modalDetail .modal').classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
     }
 });
-
 
 // Modifier un hôtel
 btnModifier.addEventListener('click', async () => {
@@ -227,12 +207,10 @@ btnModifier.addEventListener('click', async () => {
         const data = await response.json();
 
         if (data.succes) {
-            // Fermer le modal
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
-            document.body.style.overflow = '';
-            // Recharger les hôtels
-            chargerHotels();
+          document.body.classList.remove('no-scroll');
+            chargerHotels('', pageCourante);
         } else {
             alert(data.message);
         }
@@ -263,12 +241,10 @@ btnSupprimer.addEventListener('click', async () => {
         const data = await response.json();
 
         if (data.succes) {
-            // Fermer le modal
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
-            document.body.style.overflow = '';
-            // Recharger les hôtels
-            chargerHotels();
+            document.body.classList.remove('no-scroll');
+            chargerHotels('', pageCourante);
         } else {
             alert(data.message);
         }
@@ -319,8 +295,9 @@ formHotel.addEventListener('submit', async (e) => {
         if (data.succes) {
             document.querySelector('.transparant').classList.remove('active');
             document.querySelector('.modal').classList.remove('active');
+            document.body.classList.remove('no-scroll');
             formHotel.reset();
-            chargerHotels();
+            chargerHotels('', 1);
         } else {
             alert(data.message);
         }

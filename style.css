@@ -861,6 +861,7 @@ strong {
     visibility: hidden;
     max-height: 80vh;
     overflow-y: auto;
+    border-top-right-radius: 10px;
 }
 
 /* HEADER */
@@ -883,7 +884,9 @@ strong {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
-
+.div11{
+    margin-bottom: 11px;
+}
 /* INPUT BLOCK */
 .div1 {
     width: 100%;
@@ -952,6 +955,13 @@ strong {
     visibility: visible;
 }
 
+
+body.no-scroll,
+body.no-scroll .main,
+body.no-scroll .contenu,
+body.no-scroll .side-main {
+    overflow: hidden;
+}
 
 @media screen and (max-width: 500px) {
 
@@ -1113,6 +1123,7 @@ strong {
         max-width: none;
         padding: 15px;
         border-radius: 10px;
+        overflow-y: auto;
     }
 
     .display {
@@ -1145,6 +1156,7 @@ strong {
         max-width: none;
         padding: 15px;
         border-radius: 10px;
+        overflow-y: auto;
     }
 
     .display {
