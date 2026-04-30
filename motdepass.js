@@ -24,6 +24,7 @@ formMotDePasse.addEventListener('submit', async (e) => {
     btnEnvoyer.disabled = true;
 
     try {
+        
         const response = await fetch(`${API_URL}/api/auth/mot-de-passe-oublie`, {
             method: 'POST',
             headers: {
@@ -32,6 +33,8 @@ formMotDePasse.addEventListener('submit', async (e) => {
             body: JSON.stringify({ email })
         });
 
+
+    setTimeout(() => {
         const data = await response.json();
 
         if (data.succes) {
@@ -53,6 +56,8 @@ formMotDePasse.addEventListener('submit', async (e) => {
             btnEnvoyer.textContent = 'Envoyer';
             btnEnvoyer.disabled = false;
         }
+
+        }, 3000)
     } catch (erreur) {
         message.style.color = 'red';
         message.textContent = 'Erreur de connexion au serveur. Réessayez.';
