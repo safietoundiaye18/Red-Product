@@ -93,6 +93,7 @@ formReset.addEventListener('submit', async (e) => {
             // Attendre 2 secondes et rediriger vers la connexion
             await new Promise(resolve => setTimeout(resolve, 2000));
             window.location.href = 'index.html';
+            
         } else {
             messageReset.style.color = 'red';
             messageReset.textContent = data.message;
