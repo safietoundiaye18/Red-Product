@@ -46,7 +46,7 @@ formConnexion.addEventListener('submit', async (e) => {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             // Rediriger vers le dashboard
-            window.location.href = 'daschboard.html';
+            window.location.replace('daschboard.html');
         } else {
             // Afficher l'erreur
             erreurMessage.textContent = data.message;

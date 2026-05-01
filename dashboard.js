@@ -1,10 +1,26 @@
+// Empêcher le cache du navigateur
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+
+// Vérifier le token
+const token = localStorage.getItem('token');
+if (!token) {
+    window.location.href = 'index.html';
+}
+
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
+
+
 
 // Vérifier que l'utilisateur est connecté
 const token = localStorage.getItem('token');
 if (!token) {
     window.location.href = 'index.html';
 }
+
 
 // Afficher le nom de l'utilisateur dans la sidebar
 const utilisateur = JSON.parse(localStorage.getItem('utilisateur'));
@@ -58,7 +74,7 @@ if (btnDeconnexion) {
 
         localStorage.removeItem('token');
         localStorage.removeItem('utilisateur');
-        window.location.href = 'index.html';
+        window.location.replace('index.html');
     });
 }
 
