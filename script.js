@@ -26,7 +26,7 @@ const btnajouterHotel = document.querySelector(".btnajouter button");
 const transparant = document.querySelector(".transparant");
 const modal = document.querySelector(".modal");
 const fermerModal = document.querySelector("#fermermodal");
-const form = document.querySelector("#border");
+const form = document.querySelector("form#border");
 
 if (btnajouterHotel && transparant && modal && fermerModal) {
 
