@@ -6,7 +6,7 @@ if (!token) {
 
 // Empêcher retour arrière
 history.pushState(null, null, location.href);
-window.addEventListener('popstate', function() {
+window.addEventListener('popstate', function () {
     const token = localStorage.getItem('token');
     if (!token) {
         history.pushState(null, null, location.href);
@@ -47,7 +47,9 @@ async function chargerHotels(search = '', page = 1) {
         let url = `${API_URL}/api/hotels?limit=8&page=${page}&tri=createdAt&ordre=desc`;
         if (search) url += `&search=${search}`;
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
         const data = await response.json();
 
         if (data.succes) {
@@ -219,7 +221,7 @@ btnModifier.addEventListener('click', async () => {
         if (data.succes) {
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
-          document.body.classList.remove('no-scroll');
+            document.body.classList.remove('no-scroll');
             chargerHotels('', pageCourante);
         } else {
             alert(data.message);
