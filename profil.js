@@ -1,5 +1,3 @@
-const API_URL = 'https://red-product-backend-z5lx.onrender.com';
-const token = localStorage.getItem('token');
 
 const modalProfil = document.getElementById('modalProfil');
 const fermerProfil = document.getElementById('fermerProfil');
