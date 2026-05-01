@@ -42,7 +42,7 @@ async function chargerProfil() {
 // Ouvrir le modal profil
 ouvrirProfil.addEventListener('click', () => {
     modalProfil.classList.add('active');
-    document.querySelector('#modalProfil .modal2').classList.add('active');
+    document.querySelector('#modalProfil .modal').classList.add('active');
     document.body.classList.add('no-scroll');
     chargerProfil();
 });
@@ -50,7 +50,7 @@ ouvrirProfil.addEventListener('click', () => {
 // Fermer le modal profil
 fermerProfil.addEventListener('click', () => {
     modalProfil.classList.remove('active');
-    document.querySelector('#modalProfil .modal2').classList.remove('active');
+    document.querySelector('#modalProfil .modal').classList.remove('active');
     document.body.classList.remove('no-scroll');
 });
 
@@ -58,7 +58,7 @@ fermerProfil.addEventListener('click', () => {
 modalProfil.addEventListener('click', (e) => {
     if (e.target === modalProfil) {
         modalProfil.classList.remove('active');
-        document.querySelector('#modalProfil .modal2').classList.remove('active');
+        document.querySelector('#modalProfil .modal').classList.remove('active');
         document.body.classList.remove('no-scroll');
     }
 });
