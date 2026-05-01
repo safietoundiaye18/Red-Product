@@ -1,25 +1,21 @@
-// Empêcher le cache du navigateur
-window.onpageshow = function(event) {
-    if (event.persisted) {
-        window.location.reload();
-    }
-};
-
-// Vérifier le token
+// Vérifier le token à chaque chargement
 const token = localStorage.getItem('token');
 if (!token) {
-    window.location.href = 'index.html';
+    window.location.replace('index.html');
 }
+
+// Empêcher retour arrière
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', function() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        history.pushState(null, null, location.href);
+        window.location.replace('index.html');
+    }
+});
 
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
 
-
-
-// Vérifier que l'utilisateur est connecté
-const token = localStorage.getItem('token');
-if (!token) {
-    window.location.href = 'index.html';
-}
 
 
 // Afficher le nom de l'utilisateur dans la sidebar
