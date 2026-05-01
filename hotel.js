@@ -305,8 +305,8 @@ formHotel.addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (data.succes) {
-            document.querySelector('.transparant').classList.remove('active');
-            document.querySelector('.modal').classList.remove('active');
+            document.getElementById('modalAjouter').classList.remove('active');
+            document.getElementById('modalAjouterContent').classList.remove('active');
             document.body.classList.remove('no-scroll');
             formHotel.reset();
             chargerHotels('', 1);
