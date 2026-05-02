@@ -44,6 +44,7 @@ async function chargerProfil() {
 
 // Déconnexion
 const btnDeconnexion = document.getElementById('btnDeconnexion');
+console.log('btnDeconnexion:', btnDeconnexion);
 if (btnDeconnexion) {
     btnDeconnexion.addEventListener('click', async (e) => {
         e.preventDefault();
