@@ -43,11 +43,10 @@ async function chargerProfil() {
 }
 
 // Déconnexion
-const btnDeconnexion = document.getElementById('btnDeconnexion');
-console.log('btnDeconnexion:', btnDeconnexion);
-if (btnDeconnexion) {
-    btnDeconnexion.addEventListener('click', async (e) => {
+document.addEventListener('click', async (e) => {
+    if (e.target.closest('#btnDeconnexion')) {
         e.preventDefault();
+        console.log('déconnexion cliqué !');
 
         await fetch(`${API_URL}/api/auth/deconnexion`, {
             method: 'POST',
@@ -61,8 +60,9 @@ if (btnDeconnexion) {
         localStorage.removeItem('token');
         localStorage.removeItem('utilisateur');
         window.location.replace('index.html');
-    });
-}
+    }
+});
+
 // Fonction Toast
 function afficherToast(message, type = 'succes') {
     const toast = document.getElementById('toast');
