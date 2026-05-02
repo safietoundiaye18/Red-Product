@@ -29,28 +29,28 @@ function afficherToast(message, type = 'succes') {
     }, 3000);
 }
 
-// Déconnexion - fonction globale
+// // Déconnexion - fonction globale
 
-let deconnexionEnCours = false;
+// let deconnexionEnCours = false;
 
-async function deconnecter() {
-    if (deconnexionEnCours) return;
-    deconnexionEnCours = true;
+// async function deconnecter() {
+//     if (deconnexionEnCours) return;
+//     deconnexionEnCours = true;
 
-    console.log('deconnecter appelé !');
-    try {
-        await fetch(`${API_URL}/api/auth/deconnexion`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-    } catch (e) {
-        console.error(e);
-    }
+//     console.log('deconnecter appelé !');
+//     try {
+//         await fetch(`${API_URL}/api/auth/deconnexion`, {
+//             method: 'POST',
+//             headers: { 'Authorization': `Bearer ${token}` }
+//         });
+//     } catch (e) {
+//         console.error(e);
+//     }
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('utilisateur');
-    window.location.replace('index.html');
-}
+//     localStorage.removeItem('token');
+//     localStorage.removeItem('utilisateur');
+//     window.location.replace('index.html');
+// }
 
 // Charger le profil
 async function chargerProfil() {
