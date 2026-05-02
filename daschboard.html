@@ -17,73 +17,67 @@
 <body>
 
     <!-- Modal Profil -->
-    <div class="transparant" id="modalProfil">
-        <div class="modal">
-            <div>
-                <p class="haut">
-                    <i id="fermerProfil" class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i>
-                    Mon Profil
-                </p>
+<div class="transparant" id="modalProfil">
+    <div class="modal">
+        <div>
+            <p class="haut">
+                <i id="fermerProfil" class="fa-solid fa-arrow-left" style="color: rgb(0, 0, 0);"></i>
+                Mon Profil
+            </p>
+        </div>
+
+        <div id="border" style="border-top: 1.2px dotted rgb(146, 146, 146); padding-top: 20px;">
+            
+            <!-- Photo de profil -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img id="profilAvatar" src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png" 
+                    style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                <br>
+                <label style="cursor: pointer; color: gray; font-size: 0.85rem; margin-top: 8px; display: block;">
+                    <input type="file" id="avatarFile" hidden accept="image/*">
+                    Changer la photo
+                </label>
             </div>
 
-            <div id="border" style="border-top: 1.2px dotted rgb(146, 146, 146); padding-top: 20px;">
+            <!-- Message -->
+            <p id="messageProfil" style="font-size: 0.85rem; display: none; text-align: center;"></p>
 
-                <!-- Photo de profil -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <img id="profilAvatar" src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png"
-                        style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                    <br>
-                    <label style="cursor: pointer; color: gray; font-size: 0.85rem; margin-top: 8px; display: block;">
-                        <input type="file" id="avatarFile" hidden accept="image/*">
-                        Changer la photo
-                    </label>
-                </div>
+            <!-- Champs -->
+            <div class="div1">
+                <label>Nom</label>
+                <input type="text" id="profilNom" style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            </div>
 
-                <!-- Message -->
-                <p id="messageProfil" style="font-size: 0.85rem; display: none; text-align: center;"></p>
+            <div class="div1">
+                <label>Email</label>
+                <input type="email" id="profilEmail" style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            </div>
 
-                <!-- Champs -->
+            <button id="btnSauvegarderProfil" class="btnform" style="width: 100%; background-color: rgb(70, 130, 180);">
+                Sauvegarder
+            </button>
+
+            <!-- Changer mot de passe -->
+            <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">Changer le mot de passe</p>
+
                 <div class="div1">
-                    <label>Nom</label>
-                    <input type="text" id="profilNom"
-                        style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                    <label>Ancien mot de passe</label>
+                    <input type="password" id="ancienMotDePasse" style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                 </div>
 
                 <div class="div1">
-                    <label>Email</label>
-                    <input type="email" id="profilEmail"
-                        style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+                    <label>Nouveau mot de passe</label>
+                    <input type="password" id="nouveauMotDePasse" style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
                 </div>
 
-                <button id="btnSauvegarderProfil" class="btnform"
-                    style="width: 100%; background-color: rgb(70, 130, 180);">
-                    Sauvegarder
+                <button id="btnChangerMotDePasse" class="btnform" style="width: 100%; background-color: rgb(77, 77, 77);">
+                    Changer le mot de passe
                 </button>
-
-                <!-- Changer mot de passe -->
-                <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-                    <p style="font-weight: bold; margin-bottom: 10px;">Changer le mot de passe</p>
-
-                    <div class="div1">
-                        <label>Ancien mot de passe</label>
-                        <input type="password" id="ancienMotDePasse"
-                            style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-                    </div>
-
-                    <div class="div1">
-                        <label>Nouveau mot de passe</label>
-                        <input type="password" id="nouveauMotDePasse"
-                            style="width: 100%; padding: 6px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
-                    </div>
-
-                    <button id="btnChangerMotDePasse" class="btnform"
-                        style="width: 100%; background-color: rgb(77, 77, 77);">
-                        Changer le mot de passe
-                    </button>
-                </div>
             </div>
         </div>
     </div>
+</div>
 
     <div class="side-main">
         <aside class="bg" id="sidebar">
@@ -141,21 +135,21 @@
                                 <input class="input" type="text" placeholder=" Recherhe">
                             </div>
                             <p><i class="fa-regular fa-bell fa-lg" style="color: rgb(0, 0, 0);"></i></p>
-                            <div class="img1" id="ouvrirProfil" style="cursor: pointer;"><img class="image1"
-                                    id="photoUtilisateur" src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png"
-                                    alt="">
+                            <div class="img1" id="ouvrirProfil" style="cursor: pointer;"><img class="image1" id="photoUtilisateur"
+                                    src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png" alt="">
                             </div>
-                            <p onclick="deconnecter()" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color: rgb(0, 0, 0);"></i>
+                            <p> <a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"
+                                        style="color: rgb(0, 0, 0);"></i></a>
                             </p>
                         </div>
+                    </div>
 
-                        <div class="entête2">
-                            <div class="sous-entête3">
-                                <p class="size1">Bienvenue sur RED Product <br> </p>
-                                <p class="size2">Lorem ipsum dolor sit amet consecteur</p>
-                            </div>
+                    <div class="entête2">
+                        <div class="sous-entête3">
+                            <p class="size1">Bienvenue sur RED Product <br> </p>
+                            <p class="size2">Lorem ipsum dolor sit amet consecteur</p>
                         </div>
+                    </div>
                 </header>
                 <!-- EN-TETE -->
 
@@ -220,14 +214,14 @@
     </div>
 
 
-
-    <div id="toast" class="toasts"> </div>
+    
+<div id="toast" class="toasts"> </div>
     <div class="overlay"></div>
     <script src="script.js"></script>
     <script src="dashboard.js"></script>
     <script src="profil.js"></script>
 
-
+    
 </body>
 
 </html>
