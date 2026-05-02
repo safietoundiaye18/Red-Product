@@ -43,25 +43,20 @@ async function chargerProfil() {
 }
 
 // Déconnexion
-document.addEventListener('click', async (e) => {
-    if (e.target.closest('#btnDeconnexion')) {
-        e.preventDefault();
-        console.log('déconnexion cliqué !');
+async function deconnecter() {
+    await fetch(`${API_URL}/api/auth/deconnexion`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
 
-        await fetch(`${API_URL}/api/auth/deconnexion`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
+    afficherToast('Déconnexion réussie !', 'succes');
 
-        afficherToast('Déconnexion réussie !', 'succes');
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        localStorage.removeItem('token');
-        localStorage.removeItem('utilisateur');
-        window.location.replace('index.html');
-    }
-});
+    localStorage.removeItem('token');
+    localStorage.removeItem('utilisateur');
+    window.location.replace('index.html');
+}
 
 // Fonction Toast
 function afficherToast(message, type = 'succes') {

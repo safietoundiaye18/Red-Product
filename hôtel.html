@@ -154,7 +154,10 @@
                                         id="photoUtilisateur" src="images/d0ad5715ff957c6bfb22eb955f71f63b6a0704d4.png"
                                         alt="">
                                 </div>
-                                <p><a href="#" id="btnDeconnexion"><i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color: rgb(0, 0, 0);"></i></a></p>
+                                <p onclick="deconnecter()" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-right-from-bracket fa-lg"
+                                        style="color: rgb(0, 0, 0);"></i>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -307,13 +310,13 @@
                                 <div class="div1"><label for="adresse">Adresse</label></div>
                                 <input class="div11" type="text" id="adresse"
                                     placeholder="Les îles du saloum, Mar Lodj">
-                                    <p class="erreur-input" id="erreur-adresse"></p>
+                                <p class="erreur-input" id="erreur-adresse"></p>
                             </div>
 
                             <div class="div1">
                                 <div class="div1" class="div11"><label for="muméro">Numéro de téléphone</label></div>
                                 <input type="text" id="muméro" placeholder="+221 77 777 77 77">
-                                 <p class="erreur-input" id="erreur-telephone"></p>
+                                <p class="erreur-input" id="erreur-telephone"></p>
                             </div>
 
                             <div class="div1">
@@ -420,8 +423,8 @@
     </div>
 
 
-   <!-- Toast : petite notification qui apparaît et disparaît automatiquement -->
-<div id="toast" class="toasts"> </div>
+    <!-- Toast : petite notification qui apparaît et disparaît automatiquement -->
+    <div id="toast" class="toasts"> </div>
     <div class="overlay"></div>
     <script src="script.js"></script>
     <script src="hotel.js"></script>
