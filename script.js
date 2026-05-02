@@ -55,3 +55,9 @@ if (btnajouterHotel && transparant && modal && fermerModal) {
         if (form) form.reset();
     }
 }
+// Empêcher la soumission par défaut du formulaire
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+}
