@@ -30,7 +30,13 @@ function afficherToast(message, type = 'succes') {
 }
 
 // Déconnexion - fonction globale
+
+let deconnexionEnCours = false;
+
 async function deconnecter() {
+    if (deconnexionEnCours) return;
+    deconnexionEnCours = true;
+
     console.log('deconnecter appelé !');
     try {
         await fetch(`${API_URL}/api/auth/deconnexion`, {
