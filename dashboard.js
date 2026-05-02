@@ -5,14 +5,14 @@ if (!token) {
 }
 
 // Empêcher retour arrière
-history.pushState(null, null, location.href);
-window.addEventListener('popstate', function() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        history.pushState(null, null, location.href);
-        window.location.replace('index.html');
-    }
-});
+// history.pushState(null, null, location.href);
+// window.addEventListener('popstate', function() {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//         history.pushState(null, null, location.href);
+//         window.location.replace('index.html');
+//     }
+// });
 
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
 
