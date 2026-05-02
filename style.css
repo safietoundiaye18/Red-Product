@@ -866,6 +866,13 @@ strong {
     border-top-right-radius: 10px;
 }
 
+.erreur-input {
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 3px;
+    min-height: 16px;
+}
+
 /* HEADER */
 .haut {
     display: flex;

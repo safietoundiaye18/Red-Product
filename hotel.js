@@ -282,13 +282,58 @@ searchInput.addEventListener('input', (e) => {
 // Formulaire ajout hôtel
 const btnEnregistrer = document.querySelector('#modalAjouter .btnform');
 btnEnregistrer.addEventListener('click', async () => {
+    
+    // Récupérer les valeurs
+    const nom = document.getElementById('name').value.trim();
+    const email = document.getElementById('Email').value.trim();
+    const adresse = document.getElementById('adresse').value.trim();
+    const telephone = document.getElementById('muméro').value.trim();
+    const prix = document.getElementById('prix').value.trim();
+
+    // Vider les messages d'erreur
+    document.getElementById('erreur-nom').textContent = '';
+    document.getElementById('erreur-email').textContent = '';
+    document.getElementById('erreur-adresse').textContent = '';
+    document.getElementById('erreur-telephone').textContent = '';
+    document.getElementById('erreur-prix').textContent = '';
+
+    // Valider les champs
+    let estValide = true;
+
+    if (!nom) {
+        document.getElementById('erreur-nom').textContent = 'Le nom est requis';
+        estValide = false;
+    }
+
+    if (!email) {
+        document.getElementById('erreur-email').textContent = 'L\'email est requis';
+        estValide = false;
+    }
+
+    if (!adresse) {
+        document.getElementById('erreur-adresse').textContent = 'L\'adresse est requise';
+        estValide = false;
+    }
+
+    if (!telephone) {
+        document.getElementById('erreur-telephone').textContent = 'Le téléphone est requis';
+        estValide = false;
+    }
+
+    if (!prix) {
+        document.getElementById('erreur-prix').textContent = 'Le prix est requis';
+        estValide = false;
+    }
+
+    // Si un champ manque, on arrête
+    if (!estValide) return;
 
     const formData = new FormData();
-    formData.append('nom', document.getElementById('name').value);
-    formData.append('email', document.getElementById('Email').value);
-    formData.append('adresse', document.getElementById('adresse').value);
-    formData.append('telephone', document.getElementById('muméro').value);
-    formData.append('prixParNuit', document.getElementById('prix').value);
+    formData.append('nom', nom);
+    formData.append('email', email);
+    formData.append('adresse', adresse);
+    formData.append('telephone', telephone);
+    formData.append('prixParNuit', prix);
     formData.append('devise', document.querySelector('.select').value);
 
     const imageFile = document.getElementById('imageHotel') ? document.getElementById('imageHotel').files[0] : null;
@@ -310,6 +355,12 @@ btnEnregistrer.addEventListener('click', async () => {
             document.querySelectorAll('#border input, #border select').forEach(input => {
                 input.value = '';
             });
+            // Vider les messages d'erreur
+            document.getElementById('erreur-nom').textContent = '';
+            document.getElementById('erreur-email').textContent = '';
+            document.getElementById('erreur-adresse').textContent = '';
+            document.getElementById('erreur-telephone').textContent = '';
+            document.getElementById('erreur-prix').textContent = '';
             chargerHotels('', 1);
         } else {
             alert(data.message);
