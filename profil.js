@@ -63,7 +63,27 @@ if (btnDeconnexion) {
         window.location.replace('index.html');
     });
 }
+// Fonction Toast
+function afficherToast(message, type = 'succes') {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
 
+    toast.textContent = message;
+
+    if (type === 'succes') {
+        toast.style.backgroundColor = '#4CAF50';
+    } else if (type === 'erreur') {
+        toast.style.backgroundColor = '#f44336';
+    } else {
+        toast.style.backgroundColor = '#2196F3';
+    }
+
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+    }, 3000);
+}
 // Ouvrir le modal profil
 ouvrirProfil.addEventListener('click', () => {
     modalProfil.classList.add('active');
