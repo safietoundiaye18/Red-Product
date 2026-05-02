@@ -307,7 +307,9 @@ btnEnregistrer.addEventListener('click', async () => {
             document.getElementById('modalAjouter').classList.remove('active');
             document.getElementById('modalAjouterContent').classList.remove('active');
             document.body.classList.remove('no-scroll');
-            document.getElementById('border').reset();
+            document.querySelectorAll('#border input, #border select').forEach(input => {
+                input.value = '';
+            });
             chargerHotels('', 1);
         } else {
             alert(data.message);
