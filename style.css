@@ -997,7 +997,7 @@ body.no-scroll .side-main {
 @media screen and (max-width: 500px) {
 
     .cards-container {
-        margin-top: 200px;
+        margin-top: 400px;
         grid-template-columns: 1fr;
     }
 
@@ -1059,6 +1059,7 @@ body.no-scroll .side-main {
         flex-wrap: wrap;
         padding-top: 30px;
         justify-content: center;
+        margin-top: 50px;
 
     }
 
