@@ -1,4 +1,4 @@
-
+console.log('profil.js chargé !');
 const modalProfil = document.getElementById('modalProfil');
 const fermerProfil = document.getElementById('fermerProfil');
 const ouvrirProfil = document.getElementById('ouvrirProfil');
