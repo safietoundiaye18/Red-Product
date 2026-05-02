@@ -17,6 +17,27 @@ window.addEventListener('popstate', function() {
 const API_URL = 'https://red-product-backend-z5lx.onrender.com';
 
 
+// Fonction Toast
+function afficherToast(message, type = 'succes') {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+
+    toast.textContent = message;
+
+    if (type === 'succes') {
+        toast.style.backgroundColor = '#4CAF50';
+    } else if (type === 'erreur') {
+        toast.style.backgroundColor = '#f44336';
+    } else {
+        toast.style.backgroundColor = '#2196F3';
+    }
+
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+    }, 3000);
+}
 
 // Afficher le nom de l'utilisateur dans la sidebar
 const utilisateur = JSON.parse(localStorage.getItem('utilisateur'));

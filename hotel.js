@@ -39,6 +39,29 @@ const btnModifier = document.getElementById('btnModifier');
 const btnSupprimer = document.getElementById('btnSupprimer');
 let pageCourante = 1;
 
+
+// Fonction Toast
+function afficherToast(message, type = 'succes') {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+
+    toast.textContent = message;
+
+    if (type === 'succes') {
+        toast.style.backgroundColor = '#4CAF50';
+    } else if (type === 'erreur') {
+        toast.style.backgroundColor = '#f44336';
+    } else {
+        toast.style.backgroundColor = '#2196F3';
+    }
+
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+    }, 3000);
+}
+
 // Charger les hôtels
 async function chargerHotels(search = '', page = 1) {
     try {
@@ -373,45 +396,30 @@ btnEnregistrer.addEventListener('click', async () => {
     }
 });
 
+
+
 // Déconnexion
 const btnDeconnexion = document.querySelector('.fa-arrow-right-from-bracket');
 if (btnDeconnexion) {
     btnDeconnexion.closest('a').addEventListener('click', async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        await fetch(`${API_URL}/api/auth/deconnexion`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        localStorage.removeItem('token');
-        localStorage.removeItem('utilisateur');
-        window.location.href = 'index.html';
+    await fetch(`${API_URL}/api/auth/deconnexion`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
     });
+
+    // ← Toast déconnexion
+    afficherToast('Déconnexion réussie !', 'succes');
+
+    // Attendre 1 seconde pour que le toast s'affiche
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('utilisateur');
+    window.location.replace('index.html');
+});
 }
-
-// // Déconnexion
-// const btnDeconnexion = document.querySelector('.fa-arrow-right-from-bracket');
-// if (btnDeconnexion) {
-//     btnDeconnexion.closest('a').addEventListener('click', async (e) => {
-//     e.preventDefault();
-
-//     await fetch(`${API_URL}/api/auth/deconnexion`, {
-//         method: 'POST',
-//         headers: { 'Authorization': `Bearer ${token}` }
-//     });
-
-//     // ← Toast déconnexion
-//     afficherToast('Déconnexion réussie !', 'succes');
-
-//     // Attendre 1 seconde pour que le toast s'affiche
-//     await new Promise(resolve => setTimeout(resolve, 1000));
-
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('utilisateur');
-//     window.location.replace('index.html');
-// });
-// }
 
 // Charger au démarrage
 chargerHotels('', 1);
