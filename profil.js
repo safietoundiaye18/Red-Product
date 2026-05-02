@@ -25,6 +25,9 @@ async function chargerProfil() {
             if (user.avatar) {
                 document.getElementById('profilAvatar').src = user.avatar;
                 document.getElementById('photoUtilisateur').src = user.avatar;
+                // Photo dans la sidebar ← ajouter ceci
+                const photoSidebar = document.querySelector('.bas .image1');
+                if (photoSidebar) photoSidebar.src = user.avatar;
             }
 
             // Nom dans la sidebar
@@ -93,6 +96,9 @@ btnSauvegarderProfil.addEventListener('click', async () => {
             if (data.user.avatar) {
                 document.getElementById('profilAvatar').src = data.user.avatar;
                 document.getElementById('photoUtilisateur').src = data.user.avatar;
+                // Photo dans la sidebar
+                const photoSidebar = document.querySelector('.bas .image1');
+                if (photoSidebar) photoSidebar.src = data.user.avatar;
             }
 
             // Mettre à jour le nom dans la sidebar
