@@ -42,6 +42,27 @@ async function chargerProfil() {
     }
 }
 
+// Déconnexion
+const btnDeconnexion = document.querySelector('.fa-arrow-right-from-bracket');
+if (btnDeconnexion) {
+    btnDeconnexion.closest('a').addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        await fetch(`${API_URL}/api/auth/deconnexion`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        afficherToast('Déconnexion réussie !', 'succes');
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        localStorage.removeItem('token');
+        localStorage.removeItem('utilisateur');
+        window.location.replace('index.html');
+    });
+}
+
 // Ouvrir le modal profil
 ouvrirProfil.addEventListener('click', () => {
     modalProfil.classList.add('active');
