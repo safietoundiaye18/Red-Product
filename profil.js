@@ -1,63 +1,11 @@
 console.log('profil.js chargé !');
+
 const modalProfil = document.getElementById('modalProfil');
 const fermerProfil = document.getElementById('fermerProfil');
 const ouvrirProfil = document.getElementById('ouvrirProfil');
 const btnSauvegarderProfil = document.getElementById('btnSauvegarderProfil');
 const btnChangerMotDePasse = document.getElementById('btnChangerMotDePasse');
 const messageProfil = document.getElementById('messageProfil');
-
-// Charger le profil
-async function chargerProfil() {
-    try {
-        const response = await fetch(`${API_URL}/api/users/profil`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        const data = await response.json();
-
-        if (data.succes) {
-            const user = data.user;
-
-            document.getElementById('profilNom').value = user.nom;
-            document.getElementById('profilEmail').value = user.email;
-
-            // Photo de profil
-            if (user.avatar) {
-                document.getElementById('profilAvatar').src = user.avatar;
-                document.getElementById('photoUtilisateur').src = user.avatar;
-                // Photo dans la sidebar ← ajouter ceci
-                const photoSidebar = document.querySelector('.bas .image1');
-                if (photoSidebar) photoSidebar.src = user.avatar;
-            }
-
-            // Nom dans la sidebar
-            const nomSidebar = document.querySelector('.lineheight p:first-child');
-            if (nomSidebar) nomSidebar.textContent = user.nom;
-
-            // Sauvegarder dans localStorage
-            localStorage.setItem('utilisateur', JSON.stringify(user));
-        }
-    } catch (erreur) {
-        console.error(erreur);
-    }
-}
-
-// Déconnexion
-async function deconnecter() {
-    console.log('deconnecter appelé !');
-    await fetch(`${API_URL}/api/auth/deconnexion`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
-
-    afficherToast('Déconnexion réussie !', 'succes');
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    localStorage.removeItem('token');
-    localStorage.removeItem('utilisateur');
-    window.location.replace('index.html');
-}
 
 // Fonction Toast
 function afficherToast(message, type = 'succes') {
@@ -80,6 +28,56 @@ function afficherToast(message, type = 'succes') {
         toast.style.opacity = '0';
     }, 3000);
 }
+
+// Déconnexion - fonction globale
+async function deconnecter() {
+    console.log('deconnecter appelé !');
+    try {
+        await fetch(`${API_URL}/api/auth/deconnexion`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+    } catch (e) {
+        console.error(e);
+    }
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('utilisateur');
+    window.location.replace('index.html');
+}
+
+// Charger le profil
+async function chargerProfil() {
+    try {
+        const response = await fetch(`${API_URL}/api/users/profil`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        const data = await response.json();
+
+        if (data.succes) {
+            const user = data.user;
+
+            document.getElementById('profilNom').value = user.nom;
+            document.getElementById('profilEmail').value = user.email;
+
+            if (user.avatar) {
+                document.getElementById('profilAvatar').src = user.avatar;
+                document.getElementById('photoUtilisateur').src = user.avatar;
+                const photoSidebar = document.querySelector('.bas .image1');
+                if (photoSidebar) photoSidebar.src = user.avatar;
+            }
+
+            const nomSidebar = document.querySelector('.lineheight p:first-child');
+            if (nomSidebar) nomSidebar.textContent = user.nom;
+
+            localStorage.setItem('utilisateur', JSON.stringify(user));
+        }
+    } catch (erreur) {
+        console.error(erreur);
+    }
+}
+
 // Ouvrir le modal profil
 ouvrirProfil.addEventListener('click', () => {
     modalProfil.classList.add('active');
@@ -125,14 +123,7 @@ btnSauvegarderProfil.addEventListener('click', async () => {
 
         const data = await response.json();
 
-        // if (data.succes) {
-        //     messageProfil.style.color = 'green';
-        //     messageProfil.textContent = '✅ Profil mis à jour avec succès !';
-        //     messageProfil.style.display = 'block';
-
-        // Mettre à jour la photo
         if (data.succes) {
-            // ← Toast succès profil
             afficherToast('Profil mis à jour avec succès ! ✅', 'succes');
             if (data.user.avatar) {
                 document.getElementById('profilAvatar').src = data.user.avatar;
@@ -144,13 +135,10 @@ btnSauvegarderProfil.addEventListener('click', async () => {
             if (nomSidebar) nomSidebar.textContent = data.user.nom;
             localStorage.setItem('utilisateur', JSON.stringify(data.user));
         } else {
-            // ← Toast erreur profil
             afficherToast(data.message, 'erreur');
         }
     } catch (erreur) {
-        messageProfil.style.color = 'red';
-        messageProfil.textContent = 'Erreur lors de la sauvegarde.';
-        messageProfil.style.display = 'block';
+        afficherToast('Erreur lors de la sauvegarde.', 'erreur');
     } finally {
         btnSauvegarderProfil.textContent = 'Sauvegarder';
         btnSauvegarderProfil.disabled = false;
@@ -163,16 +151,12 @@ btnChangerMotDePasse.addEventListener('click', async () => {
     const nouveauMotDePasse = document.getElementById('nouveauMotDePasse').value;
 
     if (!ancienMotDePasse || !nouveauMotDePasse) {
-        messageProfil.style.color = 'red';
-        messageProfil.textContent = 'Veuillez remplir les deux champs.';
-        messageProfil.style.display = 'block';
+        afficherToast('Veuillez remplir les deux champs.', 'erreur');
         return;
     }
 
     if (nouveauMotDePasse.length < 6) {
-        messageProfil.style.color = 'red';
-        messageProfil.textContent = 'Le nouveau mot de passe doit avoir au moins 6 caractères.';
-        messageProfil.style.display = 'block';
+        afficherToast('Le nouveau mot de passe doit avoir au moins 6 caractères.', 'erreur');
         return;
     }
 
@@ -192,19 +176,15 @@ btnChangerMotDePasse.addEventListener('click', async () => {
         const data = await response.json();
 
         if (data.succes) {
-            // ← Toast succès mot de passe
             afficherToast('Mot de passe modifié avec succès ! ✅', 'succes');
             document.getElementById('ancienMotDePasse').value = '';
             document.getElementById('nouveauMotDePasse').value = '';
         } else {
-            // ← Toast erreur mot de passe
             afficherToast(data.message, 'erreur');
         }
 
     } catch (erreur) {
-        messageProfil.style.color = 'red';
-        messageProfil.textContent = 'Erreur lors de la modification.';
-        messageProfil.style.display = 'block';
+        afficherToast('Erreur lors de la modification.', 'erreur');
     } finally {
         btnChangerMotDePasse.textContent = 'Changer le mot de passe';
         btnChangerMotDePasse.disabled = false;
