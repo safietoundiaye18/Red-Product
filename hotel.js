@@ -280,9 +280,8 @@ searchInput.addEventListener('input', (e) => {
 });
 
 // Formulaire ajout hôtel
-const formHotel = document.getElementById('border');
-formHotel.addEventListener('submit', async (e) => {
-    e.preventDefault();
+const btnEnregistrer = document.querySelector('#modalAjouter .btnform');
+btnEnregistrer.addEventListener('click', async () => {
 
     const formData = new FormData();
     formData.append('nom', document.getElementById('name').value);
