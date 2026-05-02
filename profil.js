@@ -44,6 +44,7 @@ async function chargerProfil() {
 
 // Déconnexion
 async function deconnecter() {
+    console.log('deconnecter appelé !');
     await fetch(`${API_URL}/api/auth/deconnexion`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
