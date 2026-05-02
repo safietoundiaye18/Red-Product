@@ -13,6 +13,7 @@ body {
 main.no-scroll {
     overflow: hidden;
 }
+
 /* DEBUT EN-TETE */
 
 .dash1 {
@@ -440,7 +441,7 @@ span {
     background-color: rgba(177, 177, 177, 0.253);
     width: 100%;
     min-height: 100vh;
-    
+
     overflow-y: hidden;
 }
 
@@ -851,6 +852,23 @@ strong {
     visibility: hidden;
 }
 
+/* TOAST */
+
+.toasts {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* MODAL */
 .modal {
     background: #fff;
@@ -893,15 +911,18 @@ strong {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
-.div11{
+
+.div11 {
     margin-bottom: 11px;
 }
+
 /* INPUT BLOCK */
 .div1 {
     width: 100%;
     margin-bottom: 5px;
 }
-#name{
+
+#name {
     margin-bottom: 10px;
 }
 
@@ -950,9 +971,10 @@ strong {
     margin-bottom: 10px;
     position: relative;
     cursor: pointer;
-   
+
 }
-.mit{
+
+.mit {
     position: absolute;
     right: 20px;
 }
@@ -1060,7 +1082,7 @@ body.no-scroll .side-main {
     }
 
 
-     .modal {
+    .modal {
         width: 80%;
         max-width: none;
         padding: 15px;
@@ -1127,7 +1149,7 @@ body.no-scroll .side-main {
 
     }
 
-   .modal {
+    .modal {
         width: 80%;
         max-width: none;
         padding: 15px;
@@ -1160,7 +1182,7 @@ body.no-scroll .side-main {
         grid-template-columns: repeat(3, 1fr);
     }
 
-  .modal {
+    .modal {
         width: 90%;
         max-width: none;
         padding: 15px;

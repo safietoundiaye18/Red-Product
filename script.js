@@ -55,3 +55,32 @@ if (btnajouterHotel && transparant && modal && fermerModal) {
         if (form) form.reset();
     }
 }
+
+
+// Fonction Toast
+// message → le texte à afficher
+// type → 'succes' (vert), 'erreur' (rouge), 'info' (bleu)
+function afficherToast(message, type = 'succes') {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+
+    // Définir le texte
+    toast.textContent = message;
+
+    // Définir la couleur selon le type
+    if (type === 'succes') {
+        toast.style.backgroundColor = '#4CAF50'; // vert
+    } else if (type === 'erreur') {
+        toast.style.backgroundColor = '#f44336'; // rouge
+    } else {
+        toast.style.backgroundColor = '#2196F3'; // bleu
+    }
+
+    // Afficher le toast
+    toast.style.opacity = '1';
+
+    // Le faire disparaître après 3 secondes
+    setTimeout(() => {
+        toast.style.opacity = '0';
+    }, 3000);
+}

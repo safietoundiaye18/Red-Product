@@ -87,29 +87,27 @@ btnSauvegarderProfil.addEventListener('click', async () => {
 
         const data = await response.json();
 
-        if (data.succes) {
-            messageProfil.style.color = 'green';
-            messageProfil.textContent = '✅ Profil mis à jour avec succès !';
-            messageProfil.style.display = 'block';
+        // if (data.succes) {
+        //     messageProfil.style.color = 'green';
+        //     messageProfil.textContent = '✅ Profil mis à jour avec succès !';
+        //     messageProfil.style.display = 'block';
 
-            // Mettre à jour la photo
+        // Mettre à jour la photo
+        if (data.succes) {
+            // ← Toast succès profil
+            afficherToast('Profil mis à jour avec succès ! ✅', 'succes');
             if (data.user.avatar) {
                 document.getElementById('profilAvatar').src = data.user.avatar;
                 document.getElementById('photoUtilisateur').src = data.user.avatar;
-                // Photo dans la sidebar
                 const photoSidebar = document.querySelector('.bas .image1');
                 if (photoSidebar) photoSidebar.src = data.user.avatar;
             }
-
-            // Mettre à jour le nom dans la sidebar
             const nomSidebar = document.querySelector('.lineheight p:first-child');
             if (nomSidebar) nomSidebar.textContent = data.user.nom;
-
             localStorage.setItem('utilisateur', JSON.stringify(data.user));
         } else {
-            messageProfil.style.color = 'red';
-            messageProfil.textContent = data.message;
-            messageProfil.style.display = 'block';
+            // ← Toast erreur profil
+            afficherToast(data.message, 'erreur');
         }
     } catch (erreur) {
         messageProfil.style.color = 'red';
@@ -156,17 +154,15 @@ btnChangerMotDePasse.addEventListener('click', async () => {
         const data = await response.json();
 
         if (data.succes) {
-            messageProfil.style.color = 'green';
-            messageProfil.textContent = '✅ Mot de passe modifié avec succès !';
-            messageProfil.style.display = 'block';
-
+            // ← Toast succès mot de passe
+            afficherToast('Mot de passe modifié avec succès ! ✅', 'succes');
             document.getElementById('ancienMotDePasse').value = '';
             document.getElementById('nouveauMotDePasse').value = '';
         } else {
-            messageProfil.style.color = 'red';
-            messageProfil.textContent = data.message;
-            messageProfil.style.display = 'block';
+            // ← Toast erreur mot de passe
+            afficherToast(data.message, 'erreur');
         }
+
     } catch (erreur) {
         messageProfil.style.color = 'red';
         messageProfil.textContent = 'Erreur lors de la modification.';

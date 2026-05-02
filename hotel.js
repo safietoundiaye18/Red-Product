@@ -222,12 +222,15 @@ btnModifier.addEventListener('click', async () => {
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
             document.body.classList.remove('no-scroll');
+            // ← Toast succès modification
+            afficherToast('Hôtel modifié avec succès !', 'succes');
             chargerHotels('', pageCourante);
         } else {
-            alert(data.message);
+            // ← Toast erreur modification
+            afficherToast(data.message, 'erreur');
         }
     } catch (erreur) {
-        alert('Erreur lors de la modification.');
+        afficherToast('Erreur de connexion au serveur.', 'erreur'); // ← ici
         console.error(erreur);
     } finally {
         btnModifier.textContent = 'Modifier';
@@ -251,17 +254,19 @@ btnSupprimer.addEventListener('click', async () => {
         });
 
         const data = await response.json();
-
         if (data.succes) {
             modalDetail.classList.remove('active');
             document.querySelector('#modalDetail .modal').classList.remove('active');
             document.body.classList.remove('no-scroll');
+            // ← Toast succès suppression
+            afficherToast('Hôtel supprimé avec succès !', 'succes');
             chargerHotels('', pageCourante);
         } else {
-            alert(data.message);
+            // ← Toast erreur suppression
+            afficherToast(data.message, 'erreur');
         }
     } catch (erreur) {
-        alert('Erreur lors de la suppression.');
+        afficherToast('Erreur de connexion au serveur.', 'erreur'); // ← ici
         console.error(erreur);
     } finally {
         btnSupprimer.textContent = 'Supprimer';
@@ -282,7 +287,7 @@ searchInput.addEventListener('input', (e) => {
 // Formulaire ajout hôtel
 const btnEnregistrer = document.querySelector('#modalAjouter .btnform');
 btnEnregistrer.addEventListener('click', async () => {
-    
+
     // Récupérer les valeurs
     const nom = document.getElementById('name').value.trim();
     const email = document.getElementById('Email').value.trim();
@@ -355,18 +360,15 @@ btnEnregistrer.addEventListener('click', async () => {
             document.querySelectorAll('#border input, #border select').forEach(input => {
                 input.value = '';
             });
-            // Vider les messages d'erreur
-            document.getElementById('erreur-nom').textContent = '';
-            document.getElementById('erreur-email').textContent = '';
-            document.getElementById('erreur-adresse').textContent = '';
-            document.getElementById('erreur-telephone').textContent = '';
-            document.getElementById('erreur-prix').textContent = '';
+            // ← Toast succès ajout
+            afficherToast('Hôtel ajouté avec succès ! 🎉', 'succes');
             chargerHotels('', 1);
         } else {
-            alert(data.message);
+            // ← Toast erreur ajout
+            afficherToast(data.message, 'erreur');
         }
     } catch (erreur) {
-        alert('Erreur lors de la création de l\'hôtel.');
+        afficherToast('Erreur de connexion au serveur.', 'erreur'); // ← ici
         console.error(erreur);
     }
 });
