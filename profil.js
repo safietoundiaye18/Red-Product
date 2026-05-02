@@ -43,9 +43,9 @@ async function chargerProfil() {
 }
 
 // Déconnexion
-const btnDeconnexion = document.querySelector('.fa-arrow-right-from-bracket');
+const btnDeconnexion = document.getElementById('btnDeconnexion');
 if (btnDeconnexion) {
-    btnDeconnexion.closest('a').addEventListener('click', async (e) => {
+    btnDeconnexion.addEventListener('click', async (e) => {
         e.preventDefault();
 
         await fetch(`${API_URL}/api/auth/deconnexion`, {
