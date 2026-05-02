@@ -377,18 +377,25 @@ btnEnregistrer.addEventListener('click', async () => {
 const btnDeconnexion = document.querySelector('.fa-arrow-right-from-bracket');
 if (btnDeconnexion) {
     btnDeconnexion.closest('a').addEventListener('click', async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        await fetch(`${API_URL}/api/auth/deconnexion`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-
-        localStorage.removeItem('token');
-        localStorage.removeItem('utilisateur');
-        window.location.href = 'index.html';
+    await fetch(`${API_URL}/api/auth/deconnexion`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
     });
+
+    // ← Toast déconnexion
+    afficherToast('Déconnexion réussie !', 'succes');
+
+    // Attendre 1 seconde pour que le toast s'affiche
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('utilisateur');
+    window.location.replace('index.html');
+});
 }
+
 
 // Charger au démarrage
 chargerHotels('', 1);
