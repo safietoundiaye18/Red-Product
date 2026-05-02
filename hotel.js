@@ -307,7 +307,7 @@ btnEnregistrer.addEventListener('click', async () => {
             document.getElementById('modalAjouter').classList.remove('active');
             document.getElementById('modalAjouterContent').classList.remove('active');
             document.body.classList.remove('no-scroll');
-            formHotel.reset();
+            document.getElementById('border').reset();
             chargerHotels('', 1);
         } else {
             alert(data.message);
