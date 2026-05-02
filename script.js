@@ -26,7 +26,7 @@ const btnajouterHotel = document.querySelector(".btnajouter button");
 const transparant = document.getElementById('modalAjouter');
 const modal = document.getElementById('modalAjouterContent');
 const fermerModal = document.querySelector("#fermermodal");
-const form = document.querySelector("form#border");
+const form = null;
 
 if (btnajouterHotel && transparant && modal && fermerModal) {
 
@@ -54,10 +54,4 @@ if (btnajouterHotel && transparant && modal && fermerModal) {
         document.body.classList.remove('no-scroll');
         if (form) form.reset();
     }
-}
-// Empêcher la soumission par défaut du formulaire
-if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-    });
 }
