@@ -65,20 +65,19 @@ formInscription.addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (data.succes) {
-            // Sauvegarder le token
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('utilisateur', JSON.stringify(data.utilisateur));
-
             // Message de succès
             messageInscription.style.color = 'green';
-            messageInscription.textContent = 'Inscription réussie ! Redirection en cours...';
+            messageInscription.textContent = '✅ Inscription réussie ! Vérifiez votre email pour activer votre compte.';
             messageInscription.style.display = 'block';
 
-            // Attendre 1 seconde avant de rediriger
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Vider les champs
+            nomInput.value = '';
+            emailInput.value = '';
+            motDePasseInput.value = '';
 
-            // Rediriger vers le dashboard
-            window.location.href = 'daschboard.html';
+            // Remettre le bouton
+            btnInscription.textContent = "S'inscrire";
+            btnInscription.disabled = false;
         } else {
             messageInscription.style.color = 'red';
             messageInscription.textContent = data.message;

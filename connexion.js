@@ -6,6 +6,14 @@ const motDePasseInput = document.getElementById('motDePasse');
 const btnConnexion = document.getElementById('btnConnexion');
 const erreurMessage = document.getElementById('erreurMessage');
 
+// Vérifier si le compte vient d'être activé
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('activated') === 'true') {
+    erreurMessage.style.color = 'green';
+    erreurMessage.textContent = '✅ Compte activé avec succès ! Vous pouvez maintenant vous connecter.';
+    erreurMessage.style.display = 'block';
+}
+
 formConnexion.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -80,6 +88,8 @@ togglePassword.addEventListener('click', () => {
         togglePassword.classList.add('fa-eye');
     }
 });
+
+
 
 /*
 
