@@ -197,7 +197,35 @@ btnChangerMotDePasse.addEventListener('click', async () => {
     }
 });
 
-<i class="fa-regular fa-eye" id="toggleAncien" style="position: absolute; right: 10px; bottom: 8px; cursor: pointer; color: gray;"></i>
+// Icône œil ancien mot de passe
+const toggleAncien = document.getElementById('toggleAncien');
+if (toggleAncien) {
+    toggleAncien.addEventListener('click', () => {
+        const input = document.getElementById('ancienMotDePasse');
+        if (input.type === 'password') {
+            input.type = 'text';
+            toggleAncien.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            toggleAncien.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+}
+
+// Icône œil nouveau mot de passe
+const toggleNouveau = document.getElementById('toggleNouveau');
+if (toggleNouveau) {
+    toggleNouveau.addEventListener('click', () => {
+        const input = document.getElementById('nouveauMotDePasse');
+        if (input.type === 'password') {
+            input.type = 'text';
+            toggleNouveau.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            toggleNouveau.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+}
 
 // Charger le profil au démarrage
 chargerProfil();
