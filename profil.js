@@ -197,5 +197,7 @@ btnChangerMotDePasse.addEventListener('click', async () => {
     }
 });
 
+<i class="fa-regular fa-eye" id="toggleAncien" style="position: absolute; right: 10px; bottom: 8px; cursor: pointer; color: gray;"></i>
+
 // Charger le profil au démarrage
 chargerProfil();
