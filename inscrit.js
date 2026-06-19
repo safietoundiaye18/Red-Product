@@ -67,7 +67,7 @@ formInscription.addEventListener('submit', async (e) => {
         if (data.succes) {
             // Message de succès
             messageInscription.style.color = 'green';
-            messageInscription.textContent = '✅ Inscription réussie ! Vérifiez votre email pour activer votre compte.';
+            messageInscription.textContent = 'Vérifiez votre email pour activer votre compte.';
             messageInscription.style.display = 'block';
 
             // Vider les champs
