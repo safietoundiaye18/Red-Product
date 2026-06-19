@@ -31,6 +31,7 @@ main.no-scroll {
 .input {
     padding: 5px 40px;
     margin-top: 10px;
+    margin-left: 15px;
     height: 20px;
     border-radius: 12px;
     border: 1px solid grey;
